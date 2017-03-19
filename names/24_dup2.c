@@ -3,18 +3,13 @@
 #include <stdio.h>
 
 int main() {
-    int input_file = open("input.txt", O_RDWR);
-    if (input_file == -1) {
+    int output_file = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+    if (output_file == -1) {
         fprintf(stderr, "Error opening file\n");
         return -1;
     }
-    int copy;
-    printf("File descriptor of the opened file: %d\n", input_file);
-    printf("Enter the required file descriptor: ");
-    scanf("%d", &copy);
-    copy = dup2(input_file, copy);
-    // uses the FD passed. If already open, closes it before reuse
-    printf("New file descriptor after dup2() call: %d\n", copy);
-    close(input_file);
+    printf("1. This is printed on screen but 2 is not.\n");
+    dup2(output_file, STDOUT_FILENO);
+    printf("2. This is printed in file but 1 is not\n");
     return 0;
 }
