@@ -22,5 +22,6 @@ int main() {
         fprintf(stderr, "Write error\n");
         return -1;
     }
+    close(input_file);
     return 0;
 }

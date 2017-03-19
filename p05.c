@@ -33,5 +33,6 @@ int main() {
     }
     // now ls -l output.txt shows length = 23 bytes (including the hole of size 10)
     // opening in gedit will show a warning and also \00 in the gap.
+    close(output_file);
     return 0;
 }
