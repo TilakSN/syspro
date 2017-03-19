@@ -41,3 +41,28 @@ int main() {
     printf("Old inode: %lu\nNew inode: %lu\nNumber of links: %lu\n", old.st_ino, new.st_ino, old.st_nlink);
     return 0;
 }
+
+
+/*$ touch b1
+$ echo "Cat">b1
+$ ./a.out b1 b2 b3
+    soft link created
+$ ls -li b1 b2
+    ls: cannot access b2: No such file or directory
+    3155469 -rw-rw-r-- 1 guest1 guest1 4 Mar 13 09:37 b1
+$ ls -li b1 b3
+    3155469 -rw-rw-r-- 1 guest1 guest1 4 Mar 13 09:37 b1
+    3156073 lrwxrwxrwx 1 guest1 guest1 2 Mar 13 09:37 b3 -> b2
+$ ./a.out b1 b2
+    b1 b2hard link created
+$ ls -li b1 b3
+    3155469 -rw-rw-r-- 2 guest1 guest1 4 Mar 13 09:37 b1
+    3156073 lrwxrwxrwx 1 guest1 guest1 2 Mar 13 09:37 b3 -> b2
+$ ls -li b1 b2
+    3155469 -rw-rw-r-- 2 guest1 guest1 4 Mar 13 09:37 b1
+    3155469 -rw-rw-r-- 2 guest1 guest1 4 Mar 13 09:37 b2
+$ ls -li b2 b3
+    3155469 -rw-rw-r-- 2 guest1 guest1 4 Mar 13 09:37 b2
+    3156073 lrwxrwxrwx 1 guest1 guest1 2 Mar 13 09:37 b3 -> b2
+
+*/
