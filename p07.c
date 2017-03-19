@@ -29,5 +29,6 @@ int main() {
                 printf("Delete failed\n");
         }
     }
+    closedir(d);
     return 0;
 }

@@ -11,7 +11,7 @@
 
 int main() {
     int choice;
-    char f_old[B_SIZE], f_new[B_SIZE];
+    char f_old[B_SIZE], f_new[B_SIZE], buffer[B_SIZE] = {};
     printf("Enter old and new paths:\n");
     scanf("%s%s", f_old, f_new);
     printf("Press 1 for symlink, any other key for hard link\n");
@@ -21,6 +21,11 @@ int main() {
             printf("Error linking\n");
             return -1;
         }
+        if (readlink(f_new, buffer, B_SIZE) < 0) {
+            printf("Error reading link\n");
+            return -1;
+        }
+        printf("Symlink '%s' contains '%s'\n", f_new, buffer);
     }
     else {
         if (link(f_old, f_new) != 0) {
