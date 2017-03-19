@@ -19,6 +19,7 @@ int main() {
     // using lstat would also be the same except when used on symbolic link
     // stat on symbolc link returns details of file it points to, but lstat returns details of link itdelf
         printf("Error reading stat\n");
+        return -1;
     }
     printf("Device                          : %lu\n", f.st_dev);
     printf("File serial number              : %lu\n", f.st_ino);
