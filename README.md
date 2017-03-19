@@ -1,2 +1,0 @@
-# syspro
-USP lab programs
