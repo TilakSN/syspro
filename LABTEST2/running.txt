@@ -1,0 +1,9 @@
+
+for 6 and 14, gcc filename.c -lpthread
+
+
+for 11
+cc driver_file.c -o outputname
+chmod 777 interpreter
+gcc display_file.c
+./a.out
