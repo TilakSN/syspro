@@ -1,0 +1,10 @@
+#!p iarg
+
+Relative path used.
+If it fails, use absolute path.
+Example:
+#!/home/user/Desktop/USP/p
+
+Make sure you do 'gcc p.c -o p' so that this file invokes it.
+
+And also, 'chmod u+x i' to give execute-permission to this file.
